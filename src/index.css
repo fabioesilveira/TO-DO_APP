@@ -1,3 +1,12 @@
+body {
+  background-color: #ad1d1d;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
 .h1-home{
   text-align: center;
   margin-top: 100px;
@@ -20,3 +29,12 @@
 .footer-home{
   margin-top: 467px;
 }
+
+.my-container{
+  height: 800px;
+  width: 450px;
+  
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
