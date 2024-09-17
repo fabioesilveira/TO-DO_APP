@@ -13,12 +13,14 @@ body {
   font-family: "Playwrite CU", cursive;
   font-optical-sizing: auto;
   margin-bottom: 20px;
+  margin-right: 8px;
+  
 }
 
 .btn-home{
   width: 450px;
   margin-top: 20px;
-  margin-left: 32%;
+  
 }
 
 

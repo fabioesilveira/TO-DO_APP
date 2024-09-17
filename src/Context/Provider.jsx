@@ -3,11 +3,14 @@ import { useState } from "react";
 
 function Provider({ children }) {
     const [inputAdded, setInputAdded] = useState([]);
+    const [count, setCount] = useState([]);
 
 
     const contextValue = {
       inputAdded,
-      setInputAdded
+      setInputAdded,
+      count,
+      setCount
     };
 
 
