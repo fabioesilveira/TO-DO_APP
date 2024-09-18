@@ -3,28 +3,46 @@ import Card from 'react-bootstrap/Card';
 import { useContext, useState } from 'react';
 import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
+import { useNavigate } from 'react-router-dom';
 
 
 function Home() {
-    
-    
-    const { inputAdded } = useContext(Context)
-    const { count } = useContext(Context)
-    
+
+
+    const { inputAdded, setInputAdded } = useContext(Context)
+    const navigate = useNavigate()
+
+    function deleteTask(element) {
+        const removeTask = inputAdded.filter((e, i) => e !== element)
+        setInputAdded(removeTask)
+    }
+
 
     return (
-       
-            <Container className='my-container'>
-                
-                    <h1 className='h1-home'>TO DO LIST</h1>
-                    {inputAdded.map((element) => (
-                        <h4>{count}-{element}</h4>
-                    ))}
 
-                    
-                
-                <NavFooter />
-            </Container>
+        <div className='my-container'>
+            <header>
+                <h1 className='h1-home'>TO DO LIST</h1>
+            </header>
+
+            <main>
+                {inputAdded.map((element, index) => (
+                    <div className='div-map-home'>
+
+                        <h4>{index + 1}-{element}</h4>
+                        <span onClick={() => deleteTask(element)} class="material-symbols-outlined">
+                            delete_forever
+                        </span>
+                        <span class="material-symbols-outlined">
+                            edit
+                        </span>
+                    </div>
+                ))}
+            </main>
+
+
+            <NavFooter />
+        </div>
 
     )
 }

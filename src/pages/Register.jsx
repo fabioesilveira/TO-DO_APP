@@ -9,36 +9,28 @@ import NavFooter from '../components/NavFooter';
 
 function Register() {
     const [inputValue, setInputValue] = useState("");
-    const {inputAdded, setInputAdded} = useContext(Context)
-    const {count, setCount} = useContext(Context)
-    
+    const { inputAdded, setInputAdded } = useContext(Context)
+
     const handleInput = (event) => {
         const value = event.target.value;
-        setInputValue(value); 
-      };
+        setInputValue(value);
+    };
 
-    const handleTasks = () => {
+    const handleClick = () => {
         const tasks = [...inputAdded, inputValue]
         setInputAdded(tasks)
         console.log(tasks)
     };
 
-    const incrementCount = () => {
-        const taskNumber = []
-        setCount(taskNumber); 
-      };
+    return (
+      
+            <div className='my-container'>
+                <header>
+                    <h1 className='h1-home'>TO DO LIST</h1>
+                </header>
 
-    const handleClick = () => {
-        handleTasks();
-        incrementCount()
-    };
-
-    return(
-        <>
-        <div>
-                <Container>
-                    <Card>
-                        <h1 className='h1-home'>TO DO LIST</h1>
+                <main>
+                   
                         <Form.Label className='register-task-home' htmlFor="basic-url">REGISTER TASK:</Form.Label>
                         <InputGroup className='input-size' size="lg">
                             <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
@@ -47,24 +39,18 @@ function Register() {
                                 type="text"
                                 value={inputValue}
                                 onChange={handleInput}
-                                
+
 
                             />
                         </InputGroup>
                         <Button onClick={handleClick} className='btn-home' variant="secondary" size="lg">
                             REGISTER
                         </Button>
+                    
+                </main>
 
-
-                        < NavFooter />
-                    </Card>
-
-
-                </Container>
-
+                < NavFooter />
             </div>
-        
-        </>
     )
 }
 
