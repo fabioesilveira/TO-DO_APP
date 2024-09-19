@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Tasks from "./pages/Tasks";
+import Edit from "./pages/Edit";
 import Register from "./pages/Register";
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
     <Routes>
       <Route index element={< Home/>}/>
-      <Route path="tasks" element={< Tasks />}/>
+      <Route path="edit" element={< Edit />}/>
       <Route path="register" element={< Register />}/>
     </Routes>
     </>
