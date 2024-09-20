@@ -16,7 +16,7 @@ function NavFooter() {
                 </Link>
 
             </Card.Body>
-            <Card.Footer className="text-muted">2 days ago</Card.Footer>
+            <Card.Footer className="text-muted"></Card.Footer>
         </Card>
 
     )
