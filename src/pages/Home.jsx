@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import { useContext, useState } from 'react';
 import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Home() {
@@ -33,9 +33,9 @@ function Home() {
                         <span onClick={() => deleteTask(element)} class="material-symbols-outlined">
                             delete_forever
                         </span>
-                        <span class="material-symbols-outlined">
+                        < Link to="/edit" class="material-symbols-outlined">
                             edit
-                        </span>
+                        </Link>
                     </div>
                 ))}
             </main>

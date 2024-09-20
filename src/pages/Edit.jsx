@@ -2,9 +2,26 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import NavFooter from "../components/NavFooter";
+import { useContext, useState } from 'react';
+import Context from '../Context/Context';
 
 
 function Edit() {
+    const [editValue, setEditValue] = useState("");
+    const { inputAdded, setInputAdded } = useContext(Context)
+
+    const handleInput = (event) => {
+        const value = event.target.value;
+        setEditValue(value);
+    };
+
+    const handleClickEdited = () => {
+        const editedTasks = [...inputAdded, editValue];
+        setInputAdded(editedTasks)
+        
+    };
+    
+    
     return (
         <div className='my-container'>
             <header>
@@ -18,13 +35,13 @@ function Edit() {
                     <Form.Control
                         aria-label="Large"
                         type="text"
-                        value=""
-                        onChange=""
+                        value={editValue}
+                        onChange={handleInput}
 
 
                     />
                 </InputGroup>
-                <Button className='btn-home' variant="secondary" size="lg">
+                <Button onClick={handleClickEdited} className='btn-home' variant="secondary" size="lg">
                     MODIFY
                 </Button>
 
