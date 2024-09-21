@@ -7,18 +7,22 @@ import Context from '../Context/Context';
 
 
 function Edit() {
-    const [editValue, setEditValue] = useState("");
-    const { inputAdded, setInputAdded } = useContext(Context)
+    const [newValue, setNewValue] = useState("");
+    const { data, setData, editedInput, setEditedInput } = useContext(Context)
 
     const handleInput = (event) => {
         const value = event.target.value;
-        setEditValue(value);
+        setNewValue(value);
     };
 
     const handleClickEdited = () => {
-        const editedTasks = [...inputAdded, editValue];
-        setInputAdded(editedTasks)
-        
+        data.forEach((element, index) => {
+            console.log(data[index])   
+            if (element === editedInput) {
+                data[index] = newValue     
+            } 
+        })
+        setData([...data]) 
     };
     
     
@@ -35,7 +39,7 @@ function Edit() {
                     <Form.Control
                         aria-label="Large"
                         type="text"
-                        value={editValue}
+                        value={newValue}
                         onChange={handleInput}
 
 

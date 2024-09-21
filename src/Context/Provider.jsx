@@ -2,12 +2,12 @@ import Context from './Context';
 import { useState } from "react";
 
 function Provider({ children }) {
-    const [inputAdded, setInputAdded] = useState([]);
-    const [editedInput, setEditedInput] = useState([]);
+    const [data, setData] = useState([]);
+    const [editedInput, setEditedInput] = useState("");
 
     const contextValue = {
-      inputAdded,
-      setInputAdded,
+      data,
+      setData,
       editedInput,
       setEditedInput
     };

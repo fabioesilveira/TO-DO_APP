@@ -9,12 +9,20 @@ import { Link, useNavigate } from 'react-router-dom';
 function Home() {
 
 
-    const { inputAdded, setInputAdded } = useContext(Context)
+    const { data, setData, editedInput, setEditedInput } = useContext(Context)
+    
+
+
     const navigate = useNavigate()
 
     function deleteTask(element) {
-        const removeTask = inputAdded.filter((e, i) => e !== element)
-        setInputAdded(removeTask)
+        const removeTask = data.filter((e, i) => e !== element)
+        setData(removeTask)
+    }
+
+    function handleEditTask(element) {
+        setEditedInput(element)
+        navigate("/edit")
     }
 
 
@@ -26,16 +34,16 @@ function Home() {
             </header>
 
             <main>
-                {inputAdded.map((element, index) => (
+                {data.map((element, index) => (
                     <div className='div-map-home'>
 
                         <h4>{index + 1}-{element}</h4>
                         <span onClick={() => deleteTask(element)} class="material-symbols-outlined">
                             delete_forever
                         </span>
-                        < Link to="/edit" class="material-symbols-outlined">
+                        < span onClick={() => handleEditTask(element)} class="material-symbols-outlined">
                             edit
-                        </Link>
+                        </span>
                     </div>
                 ))}
             </main>

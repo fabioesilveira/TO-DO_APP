@@ -7,7 +7,7 @@ import NavFooter from '../components/NavFooter';
 
 function Register() {
     const [inputValue, setInputValue] = useState("");
-    const { inputAdded, setInputAdded } = useContext(Context)
+    const { data, setData } = useContext(Context)
 
     const handleInput = (event) => {
         const value = event.target.value;
@@ -15,8 +15,8 @@ function Register() {
     };
 
     const handleClick = () => {
-        const tasks = [...inputAdded, inputValue]
-        setInputAdded(tasks)
+        const tasks = [...data, inputValue]
+        setData(tasks)
         console.log(tasks)
     };
 
