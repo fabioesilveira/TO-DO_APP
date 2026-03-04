@@ -132,3 +132,34 @@ main {
   color: #084298;
 }
 
+.empty-state {
+  text-align: center;
+  margin-top: 30px;
+  font-family: sans-serif;
+  color: rgba(0,0,0,0.65);
+}
+
+.task-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.task-radio {
+  cursor: pointer;
+}
+
+.task-completed .h4-task {
+  color: rgba(0,0,0,0.45);
+  text-decoration: line-through;
+}
+
+.task-completed {
+  opacity: 0.85;
+}
+
+.task-icon-disabled {
+  opacity: 0.35;
+  pointer-events: none; 
+}
+

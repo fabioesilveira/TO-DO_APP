@@ -3,7 +3,7 @@ import { useState } from "react";
 
 function Provider({ children }) {
     const [data, setData] = useState([]);
-    const [editedInput, setEditedInput] = useState("");
+    const [editedInput, setEditedInput] = useState(null);
 
     const contextValue = {
       data,

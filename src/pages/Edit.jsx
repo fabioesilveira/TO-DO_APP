@@ -6,110 +6,122 @@ import Alert from "react-bootstrap/Alert";
 import NavFooter from "../components/NavFooter";
 import { useContext, useEffect, useState } from "react";
 import Context from "../Context/Context";
+import { useNavigate } from "react-router-dom";
 
 function Edit() {
-    const [newValue, setNewValue] = useState("");
-    const { data, setData, editedInput } = useContext(Context);
+  const navigate = useNavigate();
 
-    const [showDialog, setShowDialog] = useState(false);
-    const [dialogVariant, setDialogVariant] = useState("success");
-    const [dialogMsg, setDialogMsg] = useState("");
+  const { data, setData, editedInput } = useContext(Context);
+  const [newValue, setNewValue] = useState("");
 
-    // preenche o input com o valor atual 
-    useEffect(() => {
-        setNewValue(editedInput || "");
-    }, [editedInput]);
+  const [showDialog, setShowDialog] = useState(false);
+  const [dialogVariant, setDialogVariant] = useState("success");
+  const [dialogMsg, setDialogMsg] = useState("");
 
-    const openDialog = (variant, msg) => {
-        setDialogVariant(variant);
-        setDialogMsg(msg);
-        setShowDialog(true);
-    };
+  useEffect(() => {
+    setNewValue(editedInput?.text || "");
+  }, [editedInput]);
 
-    const handleClickEdited = () => {
-        const trimmed = newValue.trim();
+  const openDialog = (variant, msg) => {
+    setDialogVariant(variant);
+    setDialogMsg(msg);
+    setShowDialog(true);
+  };
 
-        if (!trimmed) {
-            openDialog("warning", "Please enter a task to update.");
-            return;
-        }
+  const handleClickEdited = () => {
+    const trimmed = newValue.trim();
 
-        if (trimmed === (editedInput || "").trim()) {
-            openDialog("warning", "No changes to save.");
-            return;
-        }
+    if (!trimmed) {
+      openDialog("warning", "Please enter a task to update.");
+      return;
+    }
 
-        const updated = data.map((item) => (item === editedInput ? trimmed : item));
-        setData(updated);
+    if (trimmed === (editedInput?.text || "").trim()) {
+      openDialog("warning", "No changes to save.");
+      return;
+    }
 
-        openDialog("success", "Task updated successfully!");
-    };
-
-    return (
-        <div className="my-container">
-            <header>
-                <h1 className="h1-home">TO DO LIST</h1>
-            </header>
-
-            <main>
-                <div className="div-register">
-                    <Form.Label className="register-task-home" htmlFor="edit-task">
-                        EDIT TASK:
-                    </Form.Label>
-
-                    <InputGroup className="input-size" size="lg">
-                        <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
-
-                        <Form.Control
-                            id="edit-task"
-                            aria-label="Task"
-                            type="text"
-                            value={newValue}
-                            onChange={(e) => setNewValue(e.target.value)}
-                            onKeyDown={(e) => {
-                                if (e.key === "Enter") handleClickEdited();
-                            }}
-                        />
-                    </InputGroup>
-
-                    <Button
-                        onClick={handleClickEdited}
-                        className="btn-home"
-                        variant="secondary"
-                        size="lg"
-                    >
-                        MODIFY
-                    </Button>
-                </div>
-            </main>
-
-            <NavFooter />
-
-            {/* Dialog */}
-            <Modal show={showDialog} onHide={() => setShowDialog(false)} centered>
-                <Modal.Header closeButton>
-                    <Modal.Title>
-                        {dialogVariant === "success" ? "Success" : "Attention"}
-                    </Modal.Title>
-                </Modal.Header>
-
-                <Modal.Body>
-                    <Alert variant={dialogVariant} className="mb-0">
-                        {dialogMsg}
-                    </Alert>
-                </Modal.Body>
-
-                <Modal.Footer>
-                    <Button
-                        variant={dialogVariant === "success" ? "primary" : "secondary"}
-                        onClick={() => setShowDialog(false)}
-                    >
-                        OK
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-        </div>
+    const updated = data.map((t) =>
+      t.id === editedInput.id ? { ...t, text: trimmed } : t
     );
+
+    setData(updated);
+    openDialog("success", "Task updated successfully!");
+  };
+
+  return (
+    <div className="my-container">
+      <header>
+        <h1 className="h1-home">TO DO LIST</h1>
+      </header>
+
+      <main>
+        <div className="div-register">
+          <Form.Label className="register-task-home" htmlFor="edit-task">
+            EDIT TASK:
+          </Form.Label>
+
+          <InputGroup className="input-size" size="lg">
+            <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
+
+            <Form.Control
+              id="edit-task"
+              aria-label="Task"
+              type="text"
+              value={newValue}
+              onChange={(e) => setNewValue(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") handleClickEdited();
+              }}
+              disabled={!!editedInput?.completed} // extra safety se tentar editar completa
+            />
+          </InputGroup>
+
+          <Button
+            onClick={handleClickEdited}
+            className="btn-home"
+            variant="secondary"
+            size="lg"
+            disabled={!!editedInput?.completed}
+          >
+            MODIFY
+          </Button>
+        </div>
+      </main>
+
+      <NavFooter />
+
+      <Modal
+        show={showDialog}
+        onHide={() => setShowDialog(false)}
+        centered
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>
+            {dialogVariant === "success" ? "Success" : "Attention"}
+          </Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <Alert variant={dialogVariant} className="mb-0">
+            {dialogMsg}
+          </Alert>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button
+            variant={dialogVariant === "success" ? "primary" : "secondary"}
+            onClick={() => {
+              setShowDialog(false);
+              if (dialogVariant === "success") navigate("/");
+            }}
+          >
+            OK
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </div>
+  );
 }
 
 export default Edit;
