@@ -1,17 +1,11 @@
-import Container from 'react-bootstrap/Container';
-import Card from 'react-bootstrap/Card';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
-import { Link, useNavigate } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
 
-
-    const { data, setData, editedInput, setEditedInput } = useContext(Context)
-
-
+    const { data, setData, setEditedInput } = useContext(Context)
 
     const navigate = useNavigate()
 
@@ -24,7 +18,6 @@ function Home() {
         setEditedInput(element)
         navigate("/edit")
     }
-
 
     return (
 
@@ -57,10 +50,8 @@ function Home() {
                 ))}
             </main>
 
-
             <NavFooter />
         </div>
-
     )
 }
 
