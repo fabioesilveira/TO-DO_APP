@@ -28,10 +28,11 @@ function Register() {
                 </header>
 
                 <main>
-                   
+                    
+                   <div className='div-register'> 
                         <Form.Label className='register-task-home' htmlFor="basic-url">REGISTER TASK:</Form.Label>
                         <InputGroup className='input-size' size="lg">
-                            <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
+                            <InputGroup.Text id="inputGroup-sizing-md" className='input-text'>TASK</InputGroup.Text>
                             <Form.Control
                                 aria-label="Large"
                                 type="text"
@@ -44,7 +45,7 @@ function Register() {
                         <Button onClick={handleClick} className='btn-home' variant="secondary" size="lg">
                             REGISTER
                         </Button>
-                    
+                    </div>
                 </main>
 
                 < NavFooter />

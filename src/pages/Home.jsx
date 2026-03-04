@@ -10,7 +10,7 @@ function Home() {
 
 
     const { data, setData, editedInput, setEditedInput } = useContext(Context)
-    
+
 
 
     const navigate = useNavigate()
@@ -36,14 +36,23 @@ function Home() {
             <main>
                 {data.map((element, index) => (
                     <div className='div-map-home'>
+                        <h4 className='h4-task'>{index + 1} - {element}</h4>
 
-                        <h4>{index + 1}-{element}</h4>
-                        <span onClick={() => deleteTask(element)} class="material-symbols-outlined">
-                            delete_forever
-                        </span>
-                        < span onClick={() => handleEditTask(element)} class="material-symbols-outlined">
-                            edit
-                        </span>
+                        <div className="task-icons">
+                            <span
+                                onClick={() => deleteTask(element)}
+                                className="material-symbols-outlined task-icon"
+                            >
+                                delete_forever
+                            </span>
+
+                            <span
+                                onClick={() => handleEditTask(element)}
+                                className="material-symbols-outlined task-icon"
+                            >
+                                edit
+                            </span>
+                        </div>
                     </div>
                 ))}
             </main>

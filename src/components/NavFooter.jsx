@@ -1,25 +1,17 @@
-import Card from 'react-bootstrap/Card';
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 function NavFooter() {
-    return (
+  return (
+    <footer className="footer">
+      <Link to="/" className="footer-icon material-symbols-outlined">
+        home
+      </Link>
 
-        <Card className="text-center footer-home">
-            <Card.Header></Card.Header>
-            <Card.Body className='emojis-nav-footer'>
-                <Link to="/" class="material-symbols-outlined">
-                    home
-                </Link>
-                <Link to="/register" class="material-symbols-outlined">
-                    add
-                </Link>
-
-            </Card.Body>
-            <Card.Footer className="text-muted"></Card.Footer>
-        </Card>
-
-    )
+      <Link to="/register" className="footer-icon material-symbols-outlined">
+        add
+      </Link>
+    </footer>
+  );
 }
 
 export default NavFooter;

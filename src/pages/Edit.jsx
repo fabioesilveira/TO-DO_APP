@@ -17,15 +17,15 @@ function Edit() {
 
     const handleClickEdited = () => {
         data.forEach((element, index) => {
-            console.log(data[index])   
+            console.log(data[index])
             if (element === editedInput) {
-                data[index] = newValue     
-            } 
+                data[index] = newValue
+            }
         })
-        setData([...data]) 
+        setData([...data])
     };
-    
-    
+
+
     return (
         <div className='my-container'>
             <header>
@@ -33,22 +33,23 @@ function Edit() {
             </header>
 
             <main>
-                <Form.Label className='register-task-home' htmlFor="basic-url">EDIT TASK:</Form.Label>
-                <InputGroup className='input-size' size="lg">
-                    <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
-                    <Form.Control
-                        aria-label="Large"
-                        type="text"
-                        value={newValue}
-                        onChange={handleInput}
+                <div className='div-register'>
+                    <Form.Label className='register-task-home' htmlFor="basic-url">EDIT TASK:</Form.Label>
+                    <InputGroup className='input-size' size="lg">
+                        <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
+                        <Form.Control
+                            aria-label="Large"
+                            type="text"
+                            value={newValue}
+                            onChange={handleInput}
 
 
-                    />
-                </InputGroup>
-                <Button onClick={handleClickEdited} className='btn-home' variant="secondary" size="lg">
-                    MODIFY
-                </Button>
-
+                        />
+                    </InputGroup>
+                    <Button onClick={handleClickEdited} className='btn-home' variant="secondary" size="lg">
+                        MODIFY
+                    </Button>
+                </div>
             </main>
 
             < NavFooter />
