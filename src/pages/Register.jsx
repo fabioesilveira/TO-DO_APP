@@ -12,7 +12,7 @@ function Register() {
   const { data, setData } = useContext(Context);
 
   const [showDialog, setShowDialog] = useState(false);
-  const [dialogVariant, setDialogVariant] = useState("success"); // 
+  const [dialogVariant, setDialogVariant] = useState("success"); 
   const [dialogMsg, setDialogMsg] = useState("");
 
   const handleInput = (event) => {
