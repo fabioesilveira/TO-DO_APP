@@ -6,6 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
+
 function Home() {
     const { data, setData, setEditedInput } = useContext(Context);
     const navigate = useNavigate();
@@ -69,7 +70,16 @@ function Home() {
 
             <main>
                 {!hasTasks ? (
-                    <p className="empty-state">You currently have no tasks.</p>
+                    <div className="empty-state-container">
+                        <p className="empty-state">You currently have no tasks.</p>
+                        <Button
+                            className="btn-home-add"
+                            variant="secondary" size="sm"
+                            onClick={() => navigate("/register")}
+                        >
+                            ADD TASK
+                        </Button>
+                    </div>
                 ) : (
                     data.map((task, index) => (
                         <div
