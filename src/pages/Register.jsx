@@ -8,103 +8,108 @@ import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
 
 function Register() {
-  const [inputValue, setInputValue] = useState("");
-  const { data, setData } = useContext(Context);
+    const [inputValue, setInputValue] = useState("");
+    const { setData } = useContext(Context);
 
-  const [showDialog, setShowDialog] = useState(false);
-  const [dialogVariant, setDialogVariant] = useState("success"); 
-  const [dialogMsg, setDialogMsg] = useState("");
+    const [showDialog, setShowDialog] = useState(false);
+    const [dialogVariant, setDialogVariant] = useState("success");
+    const [dialogMsg, setDialogMsg] = useState("");
 
-  const handleInput = (event) => {
-    setInputValue(event.target.value);
-  };
+    const handleInput = (event) => {
+        setInputValue(event.target.value);
+    };
 
-  const openDialog = (variant, msg) => {
-    setDialogVariant(variant);
-    setDialogMsg(msg);
-    setShowDialog(true);
-  };
+    const openDialog = (variant, msg) => {
+        setDialogVariant(variant);
+        setDialogMsg(msg);
+        setShowDialog(true);
+    };
 
-  const handleClick = () => {
-    const trimmed = inputValue.trim();
+    const handleClick = () => {
+        const trimmed = inputValue.trim();
 
-    if (!trimmed) {
-      openDialog("warning", "Please enter a task to register.");
-      return;
-    }
+        if (!trimmed) {
+            openDialog("warning", "Please enter a task to register.");
+            return;
+        }
 
-    const tasks = [...data, trimmed];
-    setData(tasks);
+        const newTask = {
+            id: crypto.randomUUID(),
+            text: trimmed,
+            completed: false,
+        };
 
-    setInputValue("");
+        setData((prev) => [...prev, newTask]);
 
-    openDialog("success", "Task added successfully!");
-  };
+        setInputValue("");
 
-  return (
-    <div className='my-container'>
-      <header>
-        <h1 className='h1-home'>TO DO LIST</h1>
-      </header>
+        openDialog("success", "Task added successfully!");
+    };
 
-      <main>
-        <div className='div-register'>
-          <Form.Label className='register-task-home' htmlFor="basic-url">
-            REGISTER TASK:
-          </Form.Label>
+    return (
+        <div className='my-container'>
+            <header>
+                <h1 className='h1-home'>TO DO LIST</h1>
+            </header>
 
-          <InputGroup className='input-size' size="lg">
-            <InputGroup.Text id="inputGroup-sizing-md" className='input-text'>
-              TASK
-            </InputGroup.Text>
+            <main>
+                <div className='div-register'>
+                    <Form.Label className='register-task-home' htmlFor="basic-url">
+                        REGISTER TASK:
+                    </Form.Label>
 
-            <Form.Control
-              aria-label="Task"
-              type="text"
-              value={inputValue}
-              onChange={handleInput}
-              onKeyDown={(e) => {
-                if (e.key === "Enter") handleClick(); 
-              }}
-            />
-          </InputGroup>
+                    <InputGroup className='input-size' size="lg">
+                        <InputGroup.Text id="inputGroup-sizing-md" className='input-text'>
+                            TASK
+                        </InputGroup.Text>
 
-          <Button onClick={handleClick} className='btn-home' variant="secondary" size="lg">
-            REGISTER
-          </Button>
+                        <Form.Control
+                            aria-label="Task"
+                            type="text"
+                            value={inputValue}
+                            onChange={handleInput}
+                            onKeyDown={(e) => {
+                                if (e.key === "Enter") handleClick();
+                            }}
+                        />
+                    </InputGroup>
+
+                    <Button onClick={handleClick} className='btn-home' variant="secondary" size="lg">
+                        REGISTER
+                    </Button>
+                </div>
+            </main>
+
+            <NavFooter />
+
+            <Modal
+                show={showDialog}
+                onHide={() => setShowDialog(false)}
+                centered
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title>
+                        {dialogVariant === "success" ? "Success" : "Attention"}
+                    </Modal.Title>
+                </Modal.Header>
+
+                <Modal.Body>
+                    <Alert variant={dialogVariant} className="mb-0">
+                        {dialogMsg}
+                    </Alert>
+                </Modal.Body>
+
+                <Modal.Footer>
+                    <Button
+                        variant={dialogVariant === "success" ? "primary" : "secondary"}
+                        onClick={() => setShowDialog(false)}
+                    >
+                        OK
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </div>
-      </main>
-
-      <NavFooter />
-
-      <Modal
-        show={showDialog}
-        onHide={() => setShowDialog(false)}
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>
-            {dialogVariant === "success" ? "Success" : "Attention"}
-          </Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <Alert variant={dialogVariant} className="mb-0">
-            {dialogMsg}
-          </Alert>
-        </Modal.Body>
-
-        <Modal.Footer>
-          <Button
-            variant={dialogVariant === "success" ? "primary" : "secondary"}
-            onClick={() => setShowDialog(false)}
-          >
-            OK
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  );
+    );
 }
 
 export default Register;
