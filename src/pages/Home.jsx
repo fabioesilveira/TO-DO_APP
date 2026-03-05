@@ -6,7 +6,6 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Alert from "react-bootstrap/Alert";
 
-
 function Home() {
     const { data, setData, setEditedInput } = useContext(Context);
     const navigate = useNavigate();
@@ -74,55 +73,82 @@ function Home() {
                         <p className="empty-state">You currently have no tasks.</p>
                         <Button
                             className="btn-home-add"
-                            variant="secondary" size="sm"
+                            variant="secondary"
+                            size="sm"
                             onClick={() => navigate("/register")}
                         >
                             ADD TASK
                         </Button>
                     </div>
                 ) : (
-                    data.map((task, index) => (
-                        <div
-                            key={task.id}
-                            className={`div-map-home ${task.completed ? "task-completed" : ""}`}
-                        >
-                            <div className="task-left">
-                                <input
-                                    type="checkbox"
-                                    className="task-checkbox"
-                                    checked={task.completed}
-                                    disabled={task.completed}
-                                    onChange={() => requestComplete(task.id)}
-                                    aria-label="Mark task as complete"
-                                />
-                                <h4 className="h4-task">
-                                    {index + 1} - {task.text}
-                                </h4>
-                            </div>
+                    <>
+                        <div className="tasks-header">
+                            <span className="tasks-title">Tasks:</span>
 
-                            <div className="task-icons">
-                                <span
-                                    onClick={() => requestDelete(task.id)}
-                                    className="material-symbols-outlined task-icon"
-                                    role="button"
-                                    tabIndex={0}
-                                >
-                                    delete_forever
-                                </span>
-
-                                <span
-                                    onClick={() => handleEditTask(task)}
-                                    className={`material-symbols-outlined task-icon ${task.completed ? "task-icon-disabled" : ""
-                                        }`}
-                                    role="button"
-                                    tabIndex={0}
-                                    aria-disabled={task.completed}
-                                >
-                                    edit
-                                </span>
-                            </div>
+                            <button
+                                type="button"
+                                className="tasks-clear"
+                                onClick={() =>
+                                    openConfirm({
+                                        title: "Confirm delete",
+                                        msg: "Are you sure you want to delete all tasks?",
+                                        variant: "warning",
+                                        onYes: () => {
+                                            setData([]);
+                                            closeDialog();
+                                        },
+                                    })
+                                }
+                            >
+                                Clear all
+                            </button>
                         </div>
-                    ))
+
+                        {data.map((task, index) => (
+                            <div
+                                key={task.id}
+                                className={`div-map-home ${task.completed ? "task-completed" : ""}`}
+                            >
+                                <div className="task-left">
+                                    <input
+                                        type="checkbox"
+                                        className="task-checkbox"
+                                        checked={task.completed}
+                                        disabled={task.completed}
+                                        onChange={() => requestComplete(task.id)}
+                                        aria-label="Mark task as complete"
+                                    />
+
+                                    <div className="task-text">
+                                        <span className="task-index">{index + 1} - </span>
+                                        <span className="task-label">{task.text}</span>
+                                    </div>
+                                </div>
+
+                                <div className="task-icons">
+                                    <span
+                                        onClick={() => requestDelete(task.id)}
+                                        className="material-symbols-outlined task-icon"
+                                        role="button"
+                                        tabIndex={0}
+                                    >
+                                        delete_forever
+                                    </span>
+
+                                    <span
+                                        onClick={() => handleEditTask(task)}
+                                        className={`material-symbols-outlined task-icon ${task.completed ? "task-icon-disabled" : ""
+                                            }`}
+                                        role="button"
+                                        tabIndex={0}
+                                        aria-disabled={task.completed}
+                                    >
+                                        edit
+                                    </span>
+                                </div>
+                            </div>
+                        ))}
+                    </>
                 )}
             </main>
 
