@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Alert from "react-bootstrap/Alert";
 import NavFooter from "../components/NavFooter";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import Context from "../Context/Context";
 import { useNavigate } from "react-router-dom";
 
@@ -18,8 +18,16 @@ function Edit() {
     const [dialogVariant, setDialogVariant] = useState("success");
     const [dialogMsg, setDialogMsg] = useState("");
 
+    const inputRef = useRef(null);
+
     useEffect(() => {
         setNewValue(editedInput?.text || "");
+
+        setTimeout(() => {
+            inputRef.current?.focus();
+            inputRef.current?.select();
+        }, 0);
+
     }, [editedInput]);
 
     const openDialog = (variant, msg) => {
@@ -69,6 +77,7 @@ function Edit() {
                         <InputGroup.Text id="inputGroup-sizing-lg" className='input-text'>TASK</InputGroup.Text>
 
                         <Form.Control
+                            ref={inputRef}
                             id="edit-task"
                             aria-label="Task"
                             type="text"
