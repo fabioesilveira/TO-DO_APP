@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { useContext, useState } from 'react';
+import { useContext, useState, useRef } from 'react';
 import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
 
@@ -14,6 +14,8 @@ function Register() {
     const [showDialog, setShowDialog] = useState(false);
     const [dialogVariant, setDialogVariant] = useState("success");
     const [dialogMsg, setDialogMsg] = useState("");
+
+    const inputRef = useRef(null);
 
     const handleInput = (event) => {
         setInputValue(event.target.value);
@@ -28,6 +30,9 @@ function Register() {
     const handleClick = () => {
         const trimmed = inputValue.trim();
 
+        const formatted =
+            trimmed.charAt(0).toUpperCase() + trimmed.slice(1);
+
         if (!trimmed) {
             openDialog("warning", "Please enter a task to register.");
             return;
@@ -35,7 +40,7 @@ function Register() {
 
         const newTask = {
             id: crypto.randomUUID(),
-            text: trimmed,
+            text: formatted,
             completed: false,
         };
 
@@ -44,6 +49,8 @@ function Register() {
         setInputValue("");
 
         openDialog("success", "Task added successfully!");
+
+        inputRef.current?.focus();
     };
 
     return (
@@ -64,6 +71,7 @@ function Register() {
                         </InputGroup.Text>
 
                         <Form.Control
+                            ref={inputRef}
                             aria-label="Task"
                             type="text"
                             value={inputValue}

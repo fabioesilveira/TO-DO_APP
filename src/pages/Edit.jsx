@@ -62,7 +62,7 @@ function Edit() {
           </Form.Label>
 
           <InputGroup className="input-size" size="lg">
-            <InputGroup.Text id="inputGroup-sizing-lg">TASK</InputGroup.Text>
+            <InputGroup.Text id="inputGroup-sizing-lg"  className='input-text'>TASK</InputGroup.Text>
 
             <Form.Control
               id="edit-task"
@@ -73,7 +73,7 @@ function Edit() {
               onKeyDown={(e) => {
                 if (e.key === "Enter") handleClickEdited();
               }}
-              disabled={!!editedInput?.completed} // extra safety se tentar editar completa
+              disabled={!!editedInput?.completed} 
             />
           </InputGroup>
 
