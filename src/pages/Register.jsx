@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import Alert from 'react-bootstrap/Alert';
-import { useContext, useState, useRef } from 'react';
+import { useContext, useState, useRef, useEffect } from 'react';
 import Context from '../Context/Context';
 import NavFooter from '../components/NavFooter';
 
@@ -16,6 +16,11 @@ function Register() {
     const [dialogMsg, setDialogMsg] = useState("");
 
     const inputRef = useRef(null);
+
+    useEffect(() => {
+        inputRef.current?.focus();
+        inputRef.current?.select();
+    }, []);
 
     const handleInput = (event) => {
         setInputValue(event.target.value);

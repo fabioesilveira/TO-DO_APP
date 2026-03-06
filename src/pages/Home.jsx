@@ -17,6 +17,16 @@ function Home() {
     const [dialogVariant, setDialogVariant] = useState("secondary");
     const [onConfirm, setOnConfirm] = useState(() => () => { });
 
+    const today = new Date();
+
+    const formattedDate = today.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+
+
     const openConfirm = ({ title, msg, variant = "secondary", onYes }) => {
         setDialogTitle(title);
         setDialogMsg(msg);
@@ -64,7 +74,10 @@ function Home() {
     return (
         <div className="my-container">
             <header>
+                <div> 
                 <h1 className="h1-home">TO DO LIST</h1>
+                <p className="today-date">{formattedDate}</p>
+                </div>
             </header>
 
             <main>

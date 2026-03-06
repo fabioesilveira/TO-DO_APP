@@ -299,12 +299,10 @@ main {
 main {
   height: 68%;
   overflow-y: auto;
-
   padding-bottom: 40px;
 
   /* scroll mais suave */
   scrollbar-width: thin;
-  /* firefox */
 }
 
 /* scroll mais bonito no chrome */
@@ -319,4 +317,12 @@ main::-webkit-scrollbar-thumb {
 
 main::-webkit-scrollbar-track {
   background: transparent;
+}
+
+.today-date {
+  text-align: center;
+  font-size: 14px;
+  font-family: sans-serif;
+  color: rgba(0, 0, 0, 0.6);
+  margin-top: -10px;
 }
