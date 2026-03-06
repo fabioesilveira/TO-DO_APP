@@ -17,6 +17,15 @@ function Register() {
 
     const inputRef = useRef(null);
 
+    const today = new Date();
+
+    const formattedDate = today.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+    });
+
     useEffect(() => {
         inputRef.current?.focus();
         inputRef.current?.select();
@@ -61,7 +70,10 @@ function Register() {
     return (
         <div className='my-container'>
             <header>
-                <h1 className='h1-home'>TO DO LIST</h1>
+                <div>
+                    <h1 className='h1-home'>TO DO LIST</h1>
+                    <p className="today-date">{formattedDate}</p>
+                </div>
             </header>
 
             <main>
