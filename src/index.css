@@ -300,7 +300,7 @@ main {
   height: 68%;
   overflow-y: auto;
 
-  padding-bottom: 60px;
+  padding-bottom: 40px;
 
   /* deixa o scroll mais suave */
   scrollbar-width: thin;

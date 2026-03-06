@@ -1,24 +1,30 @@
 import Context from './Context';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Provider({ children }) {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(() => {
+        const savedTasks = localStorage.getItem("tasks");
+        return savedTasks ? JSON.parse(savedTasks) : [];
+    });
+
     const [editedInput, setEditedInput] = useState(null);
 
-    const contextValue = {
-      data,
-      setData,
-      editedInput,
-      setEditedInput
-    };
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(data));
+    }, [data]);
 
+    const contextValue = {
+        data,
+        setData,
+        editedInput,
+        setEditedInput
+    };
 
     return (
         <Context.Provider value={contextValue}>
             {children}
         </Context.Provider>
-    )
+    );
 }
-
 
 export default Provider;
