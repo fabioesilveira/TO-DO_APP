@@ -1,22 +1,67 @@
-# React + Vite
+# TO-DO APP
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This To-Do application started as a simple study project and gradually evolved into a more complete and polished app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project initially stored user input in React state and displayed tasks using a mapped list. Over time, additional features were implemented, including editing and deleting tasks, input validation to prevent empty entries, and confirmation dialogs for user actions.
 
+The user interface was improved using Bootstrap, Google Fonts, and custom CSS to create a clean and modern design. Tasks can also be marked as completed using checkboxes, which apply a visual "line-through" effect to indicate finished items.
 
-TODO: click criar uma funcao que vai coletar o elemento. criar um estado no provider para armazenar o elemento. na nova pagina de edit receber o estado . input para alterar o valor do estado. 
+To improve user experience, LocalStorage was implemented through React Context to persist tasks across pages (Home, Register, and Edit) and maintain the list even after refreshing the browser. The application also displays the current date using JavaScript date formatting to enhance daily task management.
 
+[Live Demo Link](https://to-do-app-sable-three.vercel.app/)
 
-Speed
-Strenght
-Rebounds
-3 points shoot
-2 points shoot
-defense
-assistence 
-block
-overrall
+---
+
+## Features
+
+- Add, edit, and delete tasks
+- Mark tasks as completed
+- Input validation and confirmation dialogs
+- Persistent data with LocalStorage
+- Shared state management with React Context
+- Clean UI with Bootstrap and Google Fonts
+- Dynamic current date display
+
+---
+
+## Tech Stack
+
+- React
+- React Context API
+- React Router
+- JavaScript (ES6+)
+- Bootstrap
+- CSS
+- Google Fonts
+- LocalStorage
+
+---
+
+## Screenshots
+
+![Screenshot](src/assets/todo-home.png)
+![Screenshot](src/assets/todo-register.png)
+![Screenshot](src/assets/todo-edit.png)
+
+## Live Demo
+
+[Live Demo Link](https://to-do-app-sable-three.vercel.app/)
+
+## Getting Started
+
+Clone the repository and run locally:
+
+```bash
+# 1) Clone the repo
+git clone https://github.com/fabioesilveira/TO-DO_APP.git
+
+# 2) Navigate to project folder
+cd TO-DO_APP
+
+# 3) Install dependencies
+npm install
+
+# 4) Start the development server
+npm run dev
