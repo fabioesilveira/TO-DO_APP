@@ -10,8 +10,6 @@ The user interface was improved using Bootstrap, Google Fonts, and custom CSS to
 
 To improve user experience, LocalStorage was implemented through React Context to persist tasks across pages (Home, Register, and Edit) and maintain the list even after refreshing the browser. The application also displays the current date using JavaScript date formatting to enhance daily task management.
 
-[Live Demo Link](https://to-do-app-sable-three.vercel.app/)
-
 ---
 
 ## Features
@@ -48,6 +46,8 @@ To improve user experience, LocalStorage was implemented through React Context t
 ## Live Demo
 
 [Live Demo Link](https://to-do-app-sable-three.vercel.app/)
+
+---
 
 ## Getting Started
 
