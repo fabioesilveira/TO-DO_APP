@@ -21,6 +21,8 @@ To improve user experience, LocalStorage was implemented through React Context t
 - Shared state management with React Context
 - Clean UI with Bootstrap and Google Fonts
 - Dynamic current date display
+- Scrollable task list to maintain layout with many tasks
+- Sticky footer layout for better mobile experience
 
 ---
 
