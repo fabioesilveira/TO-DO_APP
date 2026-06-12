@@ -85,7 +85,7 @@ function Edit() {
                         EDIT TASK:
                     </Form.Label>
 
-                    <InputGroup className="input-size" size="lg">
+                    <InputGroup className="input-size" size="md">
                         <InputGroup.Text id="inputGroup-sizing-lg" className='input-text'>TASK</InputGroup.Text>
 
                         <Form.Control
@@ -106,7 +106,7 @@ function Edit() {
                         onClick={handleClickEdited}
                         className="btn-home"
                         variant="secondary"
-                        size="lg"
+                        size="md"
                         disabled={!!editedInput?.completed}
                     >
                         MODIFY

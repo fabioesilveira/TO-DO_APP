@@ -82,7 +82,7 @@ function Register() {
                         REGISTER TASK:
                     </Form.Label>
 
-                    <InputGroup className='input-size' size="lg">
+                    <InputGroup className='input-size' size="md">
                         <InputGroup.Text id="inputGroup-sizing-md" className='input-text'>
                             TASK
                         </InputGroup.Text>
@@ -99,7 +99,7 @@ function Register() {
                         />
                     </InputGroup>
 
-                    <Button onClick={handleClick} className='btn-home' variant="secondary" size="lg">
+                    <Button onClick={handleClick} className='btn-home' variant="secondary" size="md">
                         REGISTER
                     </Button>
                 </div>
