@@ -83,10 +83,6 @@ function Register() {
                     </Form.Label>
 
                     <InputGroup className='input-size' size="md">
-                        <InputGroup.Text id="inputGroup-sizing-md" className='input-text'>
-                            TASK
-                        </InputGroup.Text>
-
                         <Form.Control
                             ref={inputRef}
                             aria-label="Task"

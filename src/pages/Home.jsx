@@ -74,9 +74,9 @@ function Home() {
     return (
         <div className="my-container">
             <header>
-                <div> 
-                <h1 className="h1-home">TO DO LIST</h1>
-                <p className="today-date">{formattedDate}</p>
+                <div>
+                    <h1 className="h1-home">TO DO LIST</h1>
+                    <p className="today-date">{formattedDate}</p>
                 </div>
             </header>
 
@@ -140,15 +140,6 @@ function Home() {
 
                                 <div className="task-icons">
                                     <span
-                                        onClick={() => requestDelete(task.id)}
-                                        className="material-symbols-outlined task-icon"
-                                        role="button"
-                                        tabIndex={0}
-                                    >
-                                        delete_forever
-                                    </span>
-
-                                    <span
                                         onClick={() => handleEditTask(task)}
                                         className={`material-symbols-outlined task-icon ${task.completed ? "task-icon-disabled" : ""
                                             }`}
@@ -157,6 +148,15 @@ function Home() {
                                         aria-disabled={task.completed}
                                     >
                                         edit
+                                    </span>
+
+                                    <span
+                                        onClick={() => requestDelete(task.id)}
+                                        className="material-symbols-outlined task-icon deleteIcon"
+                                        role="button"
+                                        tabIndex={0}
+                                    >
+                                        delete_forever
                                     </span>
                                 </div>
                             </div>

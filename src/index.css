@@ -215,7 +215,7 @@ main {
 }
 
 .footer-icon:hover {
-  transform: scale(1.2);
+  transform: scale(1.08);
   color: #084298;
 }
 
@@ -326,4 +326,12 @@ main::-webkit-scrollbar-track {
   font-family: sans-serif;
   color: rgba(0, 0, 0, 0.6);
   margin-top: -10px;
+}
+
+.deleteIcon {
+  color: rgb(228, 2, 2);
+}
+
+.deleteIcon:hover {
+  color: #ad1d1d;
 }

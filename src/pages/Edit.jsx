@@ -86,8 +86,6 @@ function Edit() {
                     </Form.Label>
 
                     <InputGroup className="input-size" size="md">
-                        <InputGroup.Text id="inputGroup-sizing-lg" className='input-text'>TASK</InputGroup.Text>
-
                         <Form.Control
                             ref={inputRef}
                             id="edit-task"
